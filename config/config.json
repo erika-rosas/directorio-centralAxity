@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "pruebas-directorio-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/pruebasDirectorio/PruebasDirectorioWebPart.js",
+          "manifest": "./src/webparts/pruebasDirectorio/PruebasDirectorioWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "PruebasDirectorioWebPartStrings": "lib/webparts/pruebasDirectorio/loc/{locale}.js"
+  }
+}

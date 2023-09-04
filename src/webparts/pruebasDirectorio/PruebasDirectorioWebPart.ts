@@ -1,7 +1,10 @@
 import * as React from "react";
 import * as ReactDom from "react-dom";
 import { Version } from "@microsoft/sp-core-library";
-import { IPropertyPaneConfiguration, PropertyPaneTextField } from "@microsoft/sp-property-pane";
+import {
+  IPropertyPaneConfiguration,
+  PropertyPaneTextField,
+} from "@microsoft/sp-property-pane";
 import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
 import { IReadonlyTheme } from "@microsoft/sp-component-base";
 
@@ -21,17 +24,15 @@ export default class PruebasDirectorioWebPart extends BaseClientSideWebPart<IPru
   private _environmentMessage: string = "";
 
   public render(): void {
-    const element: React.ReactElement<IPruebasDirectorioProps> = React.createElement(
-      PruebasDirectorio,
-      {
+    const element: React.ReactElement<IPruebasDirectorioProps> =
+      React.createElement(PruebasDirectorio, {
         description: this.properties.description,
         isDarkTheme: this._isDarkTheme,
         environmentMessage: this._environmentMessage,
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
         userDisplayName: this.context.pageContext.user.displayName,
         listItems: this._listItems,
-      }
-    );
+      });
 
     ReactDom.render(element, this.domElement);
   }
@@ -51,8 +52,7 @@ export default class PruebasDirectorioWebPart extends BaseClientSideWebPart<IPru
       SPHttpClient.configurations.v1
     );
     const data = await response.json();
-    console.log(data.value);
-    return this.getPartitionList(data.value);
+    return data.value;
 
     // const items: IUser[] = data.value.map((item: IUser) => ({
     //   id: item.id,
@@ -63,20 +63,20 @@ export default class PruebasDirectorioWebPart extends BaseClientSideWebPart<IPru
     // }));
   }
 
-  private getPartitionList(list: any[]): any {
-    const partitionList: any = [];
-    list.map((item, index) => {
-      if (index % 3 === 0) {
-        const maxLenght = index + 3 < list.length ? index + 3 : list.length;
-        console.log(maxLenght, index);
-        console.log("max", list.length);
-        const newList = list.slice(index, maxLenght);
-        console.log(newList);
-        partitionList.push(newList);
-      }
-    });
-    return partitionList;
-  }
+  // private getPartitionList(list: any[]): any {
+  //   const partitionList: any = [];
+  //   list.map((item, index) => {
+  //     if (index % 3 === 0) {
+  //       const maxLenght = index + 3 < list.length ? index + 3 : list.length;
+  //       console.log(maxLenght, index);
+  //       console.log("max", list.length);
+  //       const newList = list.slice(index, maxLenght);
+  //       console.log(newList);
+  //       partitionList.push(newList);
+  //     }
+  //   });
+  //   return partitionList;
+  // }
 
   // private _getEnvironmentMessage(): Promise<string> {
   //   if (!!this.context.sdks.microsoftTeams) {
@@ -123,9 +123,15 @@ export default class PruebasDirectorioWebPart extends BaseClientSideWebPart<IPru
     const { semanticColors } = currentTheme;
 
     if (semanticColors) {
-      this.domElement.style.setProperty("--bodyText", semanticColors.bodyText || null);
+      this.domElement.style.setProperty(
+        "--bodyText",
+        semanticColors.bodyText || null
+      );
       this.domElement.style.setProperty("--link", semanticColors.link || null);
-      this.domElement.style.setProperty("--linkHovered", semanticColors.linkHovered || null);
+      this.domElement.style.setProperty(
+        "--linkHovered",
+        semanticColors.linkHovered || null
+      );
     }
   }
 

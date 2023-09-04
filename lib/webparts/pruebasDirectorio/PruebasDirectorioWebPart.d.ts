@@ -12,7 +12,6 @@ export default class PruebasDirectorioWebPart extends BaseClientSideWebPart<IPru
     render(): void;
     protected onInit(): Promise<void>;
     private _loadListItems;
-    private getPartitionList;
     protected onThemeChanged(currentTheme: IReadonlyTheme | undefined): void;
     protected onDispose(): void;
     protected get dataVersion(): Version;

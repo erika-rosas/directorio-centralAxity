@@ -41,6 +41,7 @@ export default class PruebasDirectorio extends React.Component<
   ];
   constructor(props: IPruebasDirectorioProps) {
     super(props);
+    console.log("lista nueva con imagenes", ...this.props.listItems);
     const listValues = this.getPartitionList(
       [...this.props.listItems],
       window.innerWidth
@@ -132,7 +133,7 @@ export default class PruebasDirectorio extends React.Component<
     return (
       <div>
         <div className={`${styles.content_filter} row p-3`}>
-          <div className={`col-lg-8 d-flex`}>
+          <div className={`col-lg-8 d-flex pb-3`}>
             <div className="input-group">
               <input
                 type="text"
@@ -210,8 +211,8 @@ export default class PruebasDirectorio extends React.Component<
                               <div className={`${styles.container_image}`}>
                                 <img
                                   className={styles.image_user}
-                                  alt="100%x280"
-                                  src="https://images.unsplash.com/photo-1532781914607-2031eca2f00d?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=7c625ea379640da3ef2e24f20df7ce8d"
+                                  alt={item.Imagen}
+                                  src={`${item.img}`}
                                 />
                               </div>
                               <div
@@ -220,14 +221,16 @@ export default class PruebasDirectorio extends React.Component<
                                 <div
                                   className={`${styles.name} ${styles.word_breaker} pb-1`}
                                 >
-                                  <div>
-                                    {" "}
-                                    {item.Title} {item.lastName}
-                                  </div>
+                                  <div> {item.Title}</div>
                                 </div>
-                                <p className={styles.job}>{item.job}</p>
-                                <p className={styles.area}>{item.area}</p>
-                                <p className={styles.email}>{item.email}</p>
+                                <div className={styles.email}>
+                                  <a
+                                    className={styles.link}
+                                    href={`mailto:${item.Correo}`}
+                                  >
+                                    {item.Correo}
+                                  </a>
+                                </div>
                               </div>
                             </div>
                           </div>

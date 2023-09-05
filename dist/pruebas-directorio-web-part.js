@@ -856,6 +856,17 @@ var __extends = (undefined && undefined.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __assign = (undefined && undefined.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -928,70 +939,27 @@ var PruebasDirectorioWebPart = /** @class */ (function (_super) {
     };
     PruebasDirectorioWebPart.prototype._loadListItems = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var listTitle, endpoint, response, data;
+            var listTitle, dirImgs, endpoint, endpointImgs, response, data, listNew;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        listTitle = "userList";
+                        listTitle = "DirectorioConsultoria";
+                        dirImgs = "/SiteAssets/imgs/";
                         endpoint = "".concat(this.context.pageContext.web.absoluteUrl, "/_api/web/lists/getbytitle('").concat(listTitle, "')/items");
+                        endpointImgs = "".concat(this.context.pageContext.web.absoluteUrl).concat(dirImgs);
                         return [4 /*yield*/, this.context.spHttpClient.get(endpoint, _microsoft_sp_http__WEBPACK_IMPORTED_MODULE_7__["SPHttpClient"].configurations.v1)];
                     case 1:
                         response = _a.sent();
-                        return [4 /*yield*/, response.json()];
-                    case 2:
+                        _a.label = 2;
+                    case 2: return [4 /*yield*/, response.json()];
+                    case 3:
                         data = _a.sent();
-                        return [2 /*return*/, data.value];
+                        listNew = data.value.map(function (item) { return (__assign(__assign({}, item), { img: "".concat(endpointImgs).concat(item.Imagen) })); });
+                        return [2 /*return*/, listNew];
                 }
             });
         });
     };
-    // private getPartitionList(list: any[]): any {
-    //   const partitionList: any = [];
-    //   list.map((item, index) => {
-    //     if (index % 3 === 0) {
-    //       const maxLenght = index + 3 < list.length ? index + 3 : list.length;
-    //       console.log(maxLenght, index);
-    //       console.log("max", list.length);
-    //       const newList = list.slice(index, maxLenght);
-    //       console.log(newList);
-    //       partitionList.push(newList);
-    //     }
-    //   });
-    //   return partitionList;
-    // }
-    // private _getEnvironmentMessage(): Promise<string> {
-    //   if (!!this.context.sdks.microsoftTeams) {
-    //     // running in Teams, office.com or Outlook
-    //     return this.context.sdks.microsoftTeams.teamsJs.app.getContext().then((context) => {
-    //       let environmentMessage: string = "";
-    //       switch (context.app.host.name) {
-    //         case "Office": // running in Office
-    //           environmentMessage = this.context.isServedFromLocalhost
-    //             ? strings.AppLocalEnvironmentOffice
-    //             : strings.AppOfficeEnvironment;
-    //           break;
-    //         case "Outlook": // running in Outlook
-    //           environmentMessage = this.context.isServedFromLocalhost
-    //             ? strings.AppLocalEnvironmentOutlook
-    //             : strings.AppOutlookEnvironment;
-    //           break;
-    //         case "Teams": // running in Teams
-    //           environmentMessage = this.context.isServedFromLocalhost
-    //             ? strings.AppLocalEnvironmentTeams
-    //             : strings.AppTeamsTabEnvironment;
-    //           break;
-    //         default:
-    //           throw new Error("Unknown host");
-    //       }
-    //       return environmentMessage;
-    //     });
-    //   }
-    //   return Promise.resolve(
-    //     this.context.isServedFromLocalhost
-    //       ? strings.AppLocalEnvironmentSharePoint
-    //       : strings.AppSharePointEnvironment
-    //   );
-    // }
     PruebasDirectorioWebPart.prototype.onThemeChanged = function (currentTheme) {
         if (!currentTheme) {
             return;
@@ -1534,23 +1502,22 @@ __webpack_require__.r(__webpack_exports__);
 /* tslint:disable */
 __webpack_require__(/*! ./PruebasDirectorio.module.css */ "ZJw3");
 var styles = {
-    pruebasDirectorio: 'pruebasDirectorio_51d1aad7',
-    container: 'container_51d1aad7',
-    container_image: 'container_image_51d1aad7',
-    container_info: 'container_info_51d1aad7',
-    image_user: 'image_user_51d1aad7',
-    font: 'font_51d1aad7',
-    name: 'name_51d1aad7',
-    job: 'job_51d1aad7',
-    email: 'email_51d1aad7',
-    area: 'area_51d1aad7',
-    card_user: 'card_user_51d1aad7',
-    word_breaker: 'word_breaker_51d1aad7',
-    cursor_pointer: 'cursor_pointer_51d1aad7',
-    button_carousel: 'button_carousel_51d1aad7',
-    content_filter: 'content_filter_51d1aad7',
-    content_alert: 'content_alert_51d1aad7',
-    legendReset: 'legendReset_51d1aad7'
+    pruebasDirectorio: 'pruebasDirectorio_77a3ca61',
+    container: 'container_77a3ca61',
+    container_image: 'container_image_77a3ca61',
+    container_info: 'container_info_77a3ca61',
+    image_user: 'image_user_77a3ca61',
+    font: 'font_77a3ca61',
+    name: 'name_77a3ca61',
+    email: 'email_77a3ca61',
+    card_user: 'card_user_77a3ca61',
+    word_breaker: 'word_breaker_77a3ca61',
+    cursor_pointer: 'cursor_pointer_77a3ca61',
+    button_carousel: 'button_carousel_77a3ca61',
+    content_filter: 'content_filter_77a3ca61',
+    content_alert: 'content_alert_77a3ca61',
+    legendReset: 'legendReset_77a3ca61',
+    link: 'link_77a3ca61'
 };
 /* harmony default export */ __webpack_exports__["default"] = (styles);
 /* tslint:enable */ 
@@ -2088,7 +2055,7 @@ if(content.locals) module.exports = content.locals;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "JPst");
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, ".pruebasDirectorio_51d1aad7{color:\"[theme:bodyText, default: #323130]\";color:var(--bodyText);overflow:hidden;padding:1em}.container_51d1aad7{background-color:#000}.container_image_51d1aad7{-ms-flex-pack:center;justify-content:center;min-height:120px}.container_image_51d1aad7,.container_info_51d1aad7{-ms-flex-align:center;align-items:center;display:-ms-flexbox;display:flex;min-width:100%}.container_info_51d1aad7{-ms-flex-pack:justify;-ms-flex-direction:column;flex-direction:column;justify-content:space-between;max-height:160px;min-height:160px;padding:15px}.image_user_51d1aad7{border-radius:50px;height:100px;-o-object-fit:cover;object-fit:cover;-o-object-position:center center;object-position:center center;width:100px}.font_51d1aad7{font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif}.name_51d1aad7{color:#3c1053;font-size:16px;font-weight:700;min-height:55px}.area_51d1aad7,.email_51d1aad7,.job_51d1aad7{font-size:14px;margin-bottom:.5rem}.card_user_51d1aad7{background:var(--complementary-bl-white,#fff);border-radius:16px;max-height:280px;min-height:280px}.word_breaker_51d1aad7{word-wrap:anywhere}.cursor_pointer_51d1aad7{cursor:pointer}.button_carousel_51d1aad7{-ms-flex-pack:justify;background:0 0;bottom:130px;display:-ms-flexbox;display:flex;justify-content:space-between;left:-5px;position:absolute;width:100%;z-index:1}.content_filter_51d1aad7{-ms-flex-pack:start;display:-ms-flexbox;display:flex;justify-content:flex-start;width:100%}.content_alert_51d1aad7{-ms-flex-pack:center;-ms-flex-align:center;align-items:center;color:#dc3b21;display:-ms-flexbox;display:flex;font-size:18px;font-weight:700;justify-content:center;width:100%}.legendReset_51d1aad7{font-size:15px;padding-left:5px}", ""]);
+exports.push([module.i, ".pruebasDirectorio_77a3ca61{color:\"[theme:bodyText, default: #323130]\";color:var(--bodyText);overflow:hidden;padding:1em}.container_77a3ca61{background-color:#000}.container_image_77a3ca61{-ms-flex-pack:center;justify-content:center;min-height:120px}.container_image_77a3ca61,.container_info_77a3ca61{-ms-flex-align:center;align-items:center;display:-ms-flexbox;display:flex;min-width:100%}.container_info_77a3ca61{-ms-flex-pack:start;-ms-flex-direction:column;flex-direction:column;justify-content:flex-start;max-height:160px;min-height:160px;padding:15px}.image_user_77a3ca61{border-radius:50px;height:100px;-o-object-fit:cover;object-fit:cover;-o-object-position:center center;object-position:center center;width:100px}.font_77a3ca61{font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif}.name_77a3ca61{color:#3c1053;font-size:16px;font-weight:700;min-height:55px}.email_77a3ca61{font-size:14px;margin-bottom:.5rem;padding-top:15px}.card_user_77a3ca61{background:var(--complementary-bl-white,#fff);border-radius:16px;max-height:280px;min-height:280px}.word_breaker_77a3ca61{word-wrap:anywhere}.cursor_pointer_77a3ca61{cursor:pointer}.button_carousel_77a3ca61{-ms-flex-pack:justify;background:0 0;bottom:130px;display:-ms-flexbox;display:flex;justify-content:space-between;left:-5px;position:absolute;width:100%;z-index:1}.content_filter_77a3ca61{-ms-flex-pack:start;display:-ms-flexbox;display:flex;justify-content:flex-start;width:100%}.content_alert_77a3ca61{-ms-flex-pack:center;-ms-flex-align:center;align-items:center;color:#dc3b21;display:-ms-flexbox;display:flex;font-size:18px;font-weight:700;justify-content:center;width:100%}.legendReset_77a3ca61{font-size:15px;padding-left:5px}.link_77a3ca61{color:rgba(0,0,0,.9);font-family:Segoe UI;font-size:14px;font-style:normal;font-weight:400;line-height:20px;text-decoration:none}.link_77a3ca61:hover{color:#3c1053}", ""]);
 // Exports
 module.exports = exports;
 
@@ -2796,6 +2763,7 @@ var PruebasDirectorio = /** @class */ (function (_super) {
             var options = _this.divisorColorRange.filter(function (option) { return display >= option.min && display <= option.max; });
             return options.length > 0 ? options[0].divisor : 3;
         };
+        console.log.apply(console, __spreadArray(["lista nueva con imagenes"], _this.props.listItems, false));
         var listValues = _this.getPartitionList(__spreadArray([], _this.props.listItems, true), window.innerWidth);
         _this.state = {
             search: "",
@@ -2832,7 +2800,7 @@ var PruebasDirectorio = /** @class */ (function (_super) {
         var listView = this.state.listView;
         return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null,
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "".concat(_PruebasDirectorio_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].content_filter, " row p-3") },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "col-lg-8 d-flex" },
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "col-lg-8 d-flex pb-3" },
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "input-group" },
                         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: "text", className: "form-control", placeholder: "Buscar", "aria-label": "Buscar", "aria-describedby": "Buscar", value: this.state.search, onChange: function (e) { return _this.setState({ search: e.target.value }); }, onKeyUp: this.getFilterSearch }),
                         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", { className: "input-group-text", id: "basic-addon2", onClick: this.getFilterSearch },
@@ -2853,17 +2821,14 @@ var PruebasDirectorio = /** @class */ (function (_super) {
                         ? list.map(function (item) { return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12", key: item.id },
                             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "border-5 shadow-sm p-2 ".concat(_PruebasDirectorio_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].card_user) },
                                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "".concat(_PruebasDirectorio_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].container_image) },
-                                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", { className: _PruebasDirectorio_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].image_user, alt: "100%x280", src: "https://images.unsplash.com/photo-1532781914607-2031eca2f00d?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjMyMDc0fQ&s=7c625ea379640da3ef2e24f20df7ce8d" })),
+                                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", { className: _PruebasDirectorio_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].image_user, alt: item.Imagen, src: "".concat(item.img) })),
                                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "".concat(_PruebasDirectorio_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].font, " ").concat(_PruebasDirectorio_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].container_info, "  text-center") },
                                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "".concat(_PruebasDirectorio_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].name, " ").concat(_PruebasDirectorio_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].word_breaker, " pb-1") },
                                         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null,
                                             " ",
-                                            item.Title,
-                                            " ",
-                                            item.lastName)),
-                                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", { className: _PruebasDirectorio_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].job }, item.job),
-                                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", { className: _PruebasDirectorio_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].area }, item.area),
-                                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", { className: _PruebasDirectorio_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].email }, item.email))))); })
+                                            item.Title)),
+                                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: _PruebasDirectorio_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].email },
+                                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("a", { className: _PruebasDirectorio_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].link, href: "mailto:".concat(item.Correo) }, item.Correo)))))); })
                         : ""))); })) : (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "".concat(_PruebasDirectorio_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].content_alert, " ") },
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null, "No se encontraron resultados")))),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "".concat(_PruebasDirectorio_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].button_carousel) },

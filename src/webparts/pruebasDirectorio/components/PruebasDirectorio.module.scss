@@ -26,7 +26,7 @@
   padding: 15px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
 }
 
@@ -49,9 +49,8 @@
   font-weight: 700;
 }
 
-.job,
-.email,
-.area {
+.email {
+  padding-top: 15px;
   font-size: 14px;
   margin-bottom: 0.5rem;
 }
@@ -96,4 +95,16 @@
 .legendReset {
   font-size: 15px;
   padding-left: 5px;
+}
+.link {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.9);
+  font-family: Segoe UI;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  &:hover {
+    color: #3c1053;
+  }
 }

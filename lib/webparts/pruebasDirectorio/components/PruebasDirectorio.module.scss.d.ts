@@ -6,9 +6,7 @@ declare const styles: {
     image_user: string;
     font: string;
     name: string;
-    job: string;
     email: string;
-    area: string;
     card_user: string;
     word_breaker: string;
     cursor_pointer: string;
@@ -16,6 +14,7 @@ declare const styles: {
     content_filter: string;
     content_alert: string;
     legendReset: string;
+    link: string;
 };
 export default styles;
 //# sourceMappingURL=PruebasDirectorio.module.scss.d.ts.map

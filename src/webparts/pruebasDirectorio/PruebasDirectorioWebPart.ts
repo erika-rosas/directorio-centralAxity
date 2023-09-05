@@ -11,7 +11,6 @@ import { IReadonlyTheme } from "@microsoft/sp-component-base";
 import * as strings from "PruebasDirectorioWebPartStrings";
 import PruebasDirectorio from "./components/PruebasDirectorio";
 import { IPruebasDirectorioProps } from "./components/IPruebasDirectorioProps";
-
 import { SPHttpClient, SPHttpClientResponse } from "@microsoft/sp-http";
 
 export interface IPruebasDirectorioWebPartProps {
@@ -44,75 +43,22 @@ export default class PruebasDirectorioWebPart extends BaseClientSideWebPart<IPru
   }
 
   private async _loadListItems(): Promise<any> {
-    const listTitle = "userList"; // Reemplaza con el nombre real de la lista
+    const listTitle = "DirectorioConsultoria"; // Reemplaza con el nombre real de la lista
+    const dirImgs = "/SiteAssets/imgs/"; // Reemplaza con el nombre real de la lista
     const endpoint = `${this.context.pageContext.web.absoluteUrl}/_api/web/lists/getbytitle('${listTitle}')/items`;
-
-    const response: SPHttpClientResponse = await this.context.spHttpClient.get(
-      endpoint,
-      SPHttpClient.configurations.v1
-    );
+    const endpointImgs = `${this.context.pageContext.web.absoluteUrl}${dirImgs}`;
+    https: const response: SPHttpClientResponse =
+      await this.context.spHttpClient.get(
+        endpoint,
+        SPHttpClient.configurations.v1
+      );
     const data = await response.json();
-    return data.value;
-
-    // const items: IUser[] = data.value.map((item: IUser) => ({
-    //   id: item.id,
-    //   Title: item.Title,
-    //   job: item.job,
-    //   email: item.email,
-    //   // Agrega más propiedades según tus necesidades
-    // }));
+    const listNew = data.value.map((item: any) => ({
+      ...item,
+      img: `${endpointImgs}${item.Imagen}`,
+    }));
+    return listNew;
   }
-
-  // private getPartitionList(list: any[]): any {
-  //   const partitionList: any = [];
-  //   list.map((item, index) => {
-  //     if (index % 3 === 0) {
-  //       const maxLenght = index + 3 < list.length ? index + 3 : list.length;
-  //       console.log(maxLenght, index);
-  //       console.log("max", list.length);
-  //       const newList = list.slice(index, maxLenght);
-  //       console.log(newList);
-  //       partitionList.push(newList);
-  //     }
-  //   });
-  //   return partitionList;
-  // }
-
-  // private _getEnvironmentMessage(): Promise<string> {
-  //   if (!!this.context.sdks.microsoftTeams) {
-  //     // running in Teams, office.com or Outlook
-  //     return this.context.sdks.microsoftTeams.teamsJs.app.getContext().then((context) => {
-  //       let environmentMessage: string = "";
-  //       switch (context.app.host.name) {
-  //         case "Office": // running in Office
-  //           environmentMessage = this.context.isServedFromLocalhost
-  //             ? strings.AppLocalEnvironmentOffice
-  //             : strings.AppOfficeEnvironment;
-  //           break;
-  //         case "Outlook": // running in Outlook
-  //           environmentMessage = this.context.isServedFromLocalhost
-  //             ? strings.AppLocalEnvironmentOutlook
-  //             : strings.AppOutlookEnvironment;
-  //           break;
-  //         case "Teams": // running in Teams
-  //           environmentMessage = this.context.isServedFromLocalhost
-  //             ? strings.AppLocalEnvironmentTeams
-  //             : strings.AppTeamsTabEnvironment;
-  //           break;
-  //         default:
-  //           throw new Error("Unknown host");
-  //       }
-
-  //       return environmentMessage;
-  //     });
-  //   }
-
-  //   return Promise.resolve(
-  //     this.context.isServedFromLocalhost
-  //       ? strings.AppLocalEnvironmentSharePoint
-  //       : strings.AppSharePointEnvironment
-  //   );
-  // }
 
   protected onThemeChanged(currentTheme: IReadonlyTheme | undefined): void {
     if (!currentTheme) {

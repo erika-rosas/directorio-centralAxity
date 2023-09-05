@@ -1534,20 +1534,23 @@ __webpack_require__.r(__webpack_exports__);
 /* tslint:disable */
 __webpack_require__(/*! ./PruebasDirectorio.module.css */ "ZJw3");
 var styles = {
-    pruebasDirectorio: 'pruebasDirectorio_b4f86b5a',
-    container: 'container_b4f86b5a',
-    container_image: 'container_image_b4f86b5a',
-    container_info: 'container_info_b4f86b5a',
-    image_user: 'image_user_b4f86b5a',
-    font: 'font_b4f86b5a',
-    name: 'name_b4f86b5a',
-    job: 'job_b4f86b5a',
-    email: 'email_b4f86b5a',
-    area: 'area_b4f86b5a',
-    card_user: 'card_user_b4f86b5a',
-    word_breaker: 'word_breaker_b4f86b5a',
-    button_carousel: 'button_carousel_b4f86b5a',
-    content_filter: 'content_filter_b4f86b5a'
+    pruebasDirectorio: 'pruebasDirectorio_51d1aad7',
+    container: 'container_51d1aad7',
+    container_image: 'container_image_51d1aad7',
+    container_info: 'container_info_51d1aad7',
+    image_user: 'image_user_51d1aad7',
+    font: 'font_51d1aad7',
+    name: 'name_51d1aad7',
+    job: 'job_51d1aad7',
+    email: 'email_51d1aad7',
+    area: 'area_51d1aad7',
+    card_user: 'card_user_51d1aad7',
+    word_breaker: 'word_breaker_51d1aad7',
+    cursor_pointer: 'cursor_pointer_51d1aad7',
+    button_carousel: 'button_carousel_51d1aad7',
+    content_filter: 'content_filter_51d1aad7',
+    content_alert: 'content_alert_51d1aad7',
+    legendReset: 'legendReset_51d1aad7'
 };
 /* harmony default export */ __webpack_exports__["default"] = (styles);
 /* tslint:enable */ 
@@ -2085,7 +2088,7 @@ if(content.locals) module.exports = content.locals;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "JPst");
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, ".pruebasDirectorio_b4f86b5a{color:\"[theme:bodyText, default: #323130]\";color:var(--bodyText);overflow:hidden;padding:1em}.container_b4f86b5a{background-color:#000}.container_image_b4f86b5a{-ms-flex-pack:center;justify-content:center;min-height:120px}.container_image_b4f86b5a,.container_info_b4f86b5a{-ms-flex-align:center;align-items:center;display:-ms-flexbox;display:flex;min-width:100%}.container_info_b4f86b5a{-ms-flex-pack:justify;-ms-flex-direction:column;flex-direction:column;justify-content:space-between;max-height:160px;min-height:160px;padding:15px}.image_user_b4f86b5a{border-radius:50px;height:100px;-o-object-fit:cover;object-fit:cover;-o-object-position:center center;object-position:center center;width:100px}.font_b4f86b5a{font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif}.name_b4f86b5a{color:#3c1053;font-size:16px;font-weight:700;min-height:55px}.area_b4f86b5a,.email_b4f86b5a,.job_b4f86b5a{font-size:14px;margin-bottom:.5rem}.card_user_b4f86b5a{background:var(--complementary-bl-white,#fff);border-radius:16px;max-height:280px;min-height:280px}.word_breaker_b4f86b5a{word-wrap:anywhere}.button_carousel_b4f86b5a{-ms-flex-pack:justify;background:0 0;bottom:130px;display:-ms-flexbox;display:flex;justify-content:space-between;left:-5px;position:absolute;width:100%;z-index:1}.content_filter_b4f86b5a{-ms-flex-pack:start;display:-ms-flexbox;display:flex;justify-content:flex-start;width:100%}", ""]);
+exports.push([module.i, ".pruebasDirectorio_51d1aad7{color:\"[theme:bodyText, default: #323130]\";color:var(--bodyText);overflow:hidden;padding:1em}.container_51d1aad7{background-color:#000}.container_image_51d1aad7{-ms-flex-pack:center;justify-content:center;min-height:120px}.container_image_51d1aad7,.container_info_51d1aad7{-ms-flex-align:center;align-items:center;display:-ms-flexbox;display:flex;min-width:100%}.container_info_51d1aad7{-ms-flex-pack:justify;-ms-flex-direction:column;flex-direction:column;justify-content:space-between;max-height:160px;min-height:160px;padding:15px}.image_user_51d1aad7{border-radius:50px;height:100px;-o-object-fit:cover;object-fit:cover;-o-object-position:center center;object-position:center center;width:100px}.font_51d1aad7{font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif}.name_51d1aad7{color:#3c1053;font-size:16px;font-weight:700;min-height:55px}.area_51d1aad7,.email_51d1aad7,.job_51d1aad7{font-size:14px;margin-bottom:.5rem}.card_user_51d1aad7{background:var(--complementary-bl-white,#fff);border-radius:16px;max-height:280px;min-height:280px}.word_breaker_51d1aad7{word-wrap:anywhere}.cursor_pointer_51d1aad7{cursor:pointer}.button_carousel_51d1aad7{-ms-flex-pack:justify;background:0 0;bottom:130px;display:-ms-flexbox;display:flex;justify-content:space-between;left:-5px;position:absolute;width:100%;z-index:1}.content_filter_51d1aad7{-ms-flex-pack:start;display:-ms-flexbox;display:flex;justify-content:flex-start;width:100%}.content_alert_51d1aad7{-ms-flex-pack:center;-ms-flex-align:center;align-items:center;color:#dc3b21;display:-ms-flexbox;display:flex;font-size:18px;font-weight:700;justify-content:center;width:100%}.legendReset_51d1aad7{font-size:15px;padding-left:5px}", ""]);
 // Exports
 module.exports = exports;
 
@@ -2742,29 +2745,39 @@ var PruebasDirectorio = /** @class */ (function (_super) {
     function PruebasDirectorio(props) {
         var _this = _super.call(this, props) || this;
         _this.listOrigin = [];
-        _this.listView = [];
         _this.handleChange = function (event, name) {
             var _a;
-            _this.setState(__assign(__assign({}, _this.state), (_a = {}, _a[name] = event.target.value, _a)));
+            _this.setState(__assign(__assign({}, _this.state), (_a = {}, _a[name] = event.target.value, _a.listView = _this.state.listView, _a)));
         };
-        _this.getSearch = function () {
-            var newList = _this.listOrigin.filter(function (list) { return list.area === "area 3"; });
-            // const newList = this.listOrigin.filter((list: any) => {
-            //   return (
-            //     list.Title.toLowerCase().indexOf(this.state.search.toLowerCase()) > -1
-            //   );
-            // });
-            // console.log("newList", newList);
-            _this.listView = _this.getPartitionList(__spreadArray([], newList, true));
-            console.log("empece a buscar", _this.listView);
-            _this.render();
+        _this.getFilterSearch = function () {
+            console.log("search value", _this.state.search);
+            var newList = _this.listOrigin.filter(function (list) {
+                return (list.Title.toLowerCase().indexOf(_this.state.search.toLowerCase()) > -1);
+            });
+            _this.getSetListState(newList);
+            console.log("valores return", newList);
         };
+        _this.getSetListState = function (listNew) {
+            var listValues = _this.getPartitionList(__spreadArray([], listNew, true));
+            _this.setState({
+                search: _this.state.search,
+                listView: listValues,
+            });
+        };
+        _this.getFilterReset = function () {
+            var listValues = _this.getPartitionList(__spreadArray([], _this.props.listItems, true));
+            _this.setState({
+                search: "",
+                listView: listValues,
+            });
+        };
+        var listValues = _this.getPartitionList(__spreadArray([], _this.props.listItems, true));
         _this.state = {
             search: "",
-            area: "",
+            listView: listValues,
         };
         _this.listOrigin = __spreadArray([], _this.props.listItems, true);
-        _this.listView = _this.getPartitionList(__spreadArray([], _this.props.listItems, true));
+        _this.handleChange = _this.handleChange.bind(_this);
         return _this;
     }
     PruebasDirectorio.prototype.getPartitionList = function (list) {
@@ -2783,24 +2796,26 @@ var PruebasDirectorio = /** @class */ (function (_super) {
     };
     PruebasDirectorio.prototype.render = function () {
         var _this = this;
-        // const listOrigin = [...this.props.listItems];
-        // console.log(this.props.listItems);
+        var listView = this.state.listView;
         return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null,
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "".concat(_PruebasDirectorio_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].content_filter, " row p-3") },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "col-lg-5" },
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "col-lg-8 d-flex" },
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "input-group" },
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: "text", className: "form-control", placeholder: "Buscar", "aria-label": "Buscar", "aria-describedby": "Buscar", value: this.state.search, onChange: function (event) { return _this.handleChange(event, "search"); } }),
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", { className: "input-group-text", id: "basic-addon2", onClick: this.getSearch },
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: "text", className: "form-control", placeholder: "Buscar", "aria-label": "Buscar", "aria-describedby": "Buscar", value: this.state.search, onChange: function (e) { return _this.setState({ search: e.target.value }); }, onKeyUp: this.getFilterSearch }),
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", { className: "input-group-text", id: "basic-addon2", onClick: this.getFilterSearch },
                             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("svg", { xmlns: "http://www.w3.org/2000/svg", width: "16", height: "16", fill: "currentColor", className: "bi bi-search", viewBox: "0 0 16 16" },
                                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("path", { d: "M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" }))))),
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "col-lg-4" },
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("select", { className: "form-select", "aria-label": "Default select example", value: this.state.area, onChange: function (event) { return _this.handleChange(event, "area"); } },
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("option", { selected: true }, "Selecciona una \u00E1rea"),
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("option", { value: "1" }, "One"),
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("option", { value: "2" }, "Two"),
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("option", { value: "3" }, "Three")))),
+                this.state.search !== "" ? (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "".concat(_PruebasDirectorio_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].cursor_pointer, " col-lg-3 d-flex pt-2 pe-auto") },
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", { onClick: this.getFilterReset },
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("svg", { xmlns: "http://www.w3.org/2000/svg", width: "16", height: "16", fill: "currentColor", className: "bi bi-x-circle", viewBox: "0 0 16 16" },
+                            " ",
+                            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("path", { d: "M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" }),
+                            " ",
+                            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("path", { d: "M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" }))),
+                    " ",
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", { className: "".concat(_PruebasDirectorio_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].legendReset, " fw-bold font") }, "Limpiar filtro"))) : ("")),
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { id: "carouselExample", className: "carousel slide" },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "carousel-inner" }, this.listView.map(function (list, index) { return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "carousel-item ".concat(index === 0 ? "active" : ""), key: index },
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "carousel-inner" }, listView.length !== 0 ? (listView.map(function (list, index) { return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "carousel-item ".concat(index === 0 ? "active" : ""), key: index },
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "row" }, list !== undefined
                         ? list.map(function (item) { return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "col-md-4 mb-3", key: item.id },
                             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "border-5 shadow-sm p-2 ".concat(_PruebasDirectorio_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].card_user) },
@@ -2816,7 +2831,8 @@ var PruebasDirectorio = /** @class */ (function (_super) {
                                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", { className: _PruebasDirectorio_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].job }, item.job),
                                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", { className: _PruebasDirectorio_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].area }, item.area),
                                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", { className: _PruebasDirectorio_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].email }, item.email))))); })
-                        : ""))); })),
+                        : ""))); })) : (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "".concat(_PruebasDirectorio_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].content_alert, " ") },
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null, "No se encontraron resultados")))),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "".concat(_PruebasDirectorio_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].button_carousel) },
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { type: "button", "data-bs-target": "#carouselExample", "data-bs-slide": "prev", className: "btn" },
                         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("svg", { xmlns: "http://www.w3.org/2000/svg", width: "16", height: "16", fill: "currentColor", className: "bi bi-chevron-left", viewBox: "0 0 16 16" },

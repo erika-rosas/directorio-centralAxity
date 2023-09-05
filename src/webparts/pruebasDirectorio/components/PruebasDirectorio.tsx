@@ -7,7 +7,7 @@ import "bootstrap/dist/js/bootstrap.min.js";
 
 interface IPruebasDirectorioState {
   search: string;
-  area: string;
+  listView: any[];
 }
 export default class PruebasDirectorio extends React.Component<
   IPruebasDirectorioProps,
@@ -15,44 +15,50 @@ export default class PruebasDirectorio extends React.Component<
   {}
 > {
   listOrigin: any = [];
-  listView: any = [];
   constructor(props: IPruebasDirectorioProps) {
     super(props);
+    const listValues = this.getPartitionList([...this.props.listItems]);
     this.state = {
       search: "",
-      area: "",
+      listView: listValues,
     };
     this.listOrigin = [...this.props.listItems];
-    this.listView = this.getPartitionList([...this.props.listItems]);
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange = (
-    event:
-      | React.ChangeEvent<HTMLSelectElement>
-      | React.ChangeEvent<HTMLInputElement>,
-    name: string
-  ) => {
+  handleChange = (event: React.ChangeEvent<HTMLInputElement>, name: string) => {
     this.setState({
       ...this.state,
       [name]: event.target.value,
+      listView: this.state.listView,
     });
   };
-  getSearch = () => {
-    const newList = this.listOrigin.filter(
-      (list: any) => list.area === "area 3"
-    );
-    // const newList = this.listOrigin.filter((list: any) => {
-    //   return (
-    //     list.Title.toLowerCase().indexOf(this.state.search.toLowerCase()) > -1
-    //   );
-    // });
-    // console.log("newList", newList);
 
-    this.listView = this.getPartitionList([...newList]);
-    console.log("empece a buscar", this.listView);
-    this.render();
+  getFilterSearch = () => {
+    console.log("search value", this.state.search);
+    const newList = this.listOrigin.filter((list: any) => {
+      return (
+        list.Title.toLowerCase().indexOf(this.state.search.toLowerCase()) > -1
+      );
+    });
+    this.getSetListState(newList);
+    console.log("valores return", newList);
   };
 
+  getSetListState = (listNew: any[]): void => {
+    const listValues = this.getPartitionList([...listNew]);
+    this.setState({
+      search: this.state.search,
+      listView: listValues,
+    });
+  };
+  getFilterReset = (): void => {
+    const listValues = this.getPartitionList([...this.props.listItems]);
+    this.setState({
+      search: "",
+      listView: listValues,
+    });
+  };
   getPartitionList(list: any[]): any {
     const partitionList: any = [];
     list.map((item, index) => {
@@ -67,13 +73,14 @@ export default class PruebasDirectorio extends React.Component<
     });
     return partitionList;
   }
+
   public render(): React.ReactElement<IPruebasDirectorioProps> {
-    // const listOrigin = [...this.props.listItems];
-    // console.log(this.props.listItems);
+    const { listView } = this.state;
+
     return (
       <div>
         <div className={`${styles.content_filter} row p-3`}>
-          <div className={`col-lg-5`}>
+          <div className={`col-lg-8 d-flex`}>
             <div className="input-group">
               <input
                 type="text"
@@ -82,12 +89,14 @@ export default class PruebasDirectorio extends React.Component<
                 aria-label="Buscar"
                 aria-describedby="Buscar"
                 value={this.state.search}
-                onChange={(event) => this.handleChange(event, "search")}
+                onChange={(e) => this.setState({ search: e.target.value })}
+                onKeyUp={this.getFilterSearch}
               />
+
               <span
                 className="input-group-text"
                 id="basic-addon2"
-                onClick={this.getSearch}
+                onClick={this.getFilterSearch}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -102,63 +111,81 @@ export default class PruebasDirectorio extends React.Component<
               </span>
             </div>
           </div>
-          <div className={`col-lg-4`}>
-            <select
-              className="form-select"
-              aria-label="Default select example"
-              value={this.state.area}
-              onChange={(event) => this.handleChange(event, "area")}
+          {this.state.search !== "" ? (
+            <div
+              className={`${styles.cursor_pointer} col-lg-3 d-flex pt-2 pe-auto`}
             >
-              <option selected>Selecciona una área</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
-          </div>
+              <span onClick={this.getFilterReset}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  className="bi bi-x-circle"
+                  viewBox="0 0 16 16"
+                >
+                  {" "}
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />{" "}
+                  <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                </svg>
+              </span>{" "}
+              <span className={`${styles.legendReset} fw-bold font`}>
+                Limpiar filtro
+              </span>
+            </div>
+          ) : (
+            ""
+          )}
         </div>
         <div id="carouselExample" className="carousel slide">
           <div className="carousel-inner">
-            {this.listView.map((list: any, index: number) => (
-              <div
-                className={`carousel-item ${index === 0 ? "active" : ""}`}
-                key={index}
-              >
-                <div className="row">
-                  {list !== undefined
-                    ? list.map((item: any) => (
-                        <div className="col-md-4 mb-3" key={item.id}>
-                          <div
-                            className={`border-5 shadow-sm p-2 ${styles.card_user}`}
-                          >
-                            <div className={`${styles.container_image}`}>
-                              <img
-                                className={styles.image_user}
-                                alt="100%x280"
-                                src="https://images.unsplash.com/photo-1532781914607-2031eca2f00d?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=7c625ea379640da3ef2e24f20df7ce8d"
-                              />
-                            </div>
+            {listView.length !== 0 ? (
+              listView.map((list: any, index: number) => (
+                <div
+                  className={`carousel-item ${index === 0 ? "active" : ""}`}
+                  key={index}
+                >
+                  <div className="row">
+                    {list !== undefined
+                      ? list.map((item: any) => (
+                          <div className="col-md-4 mb-3" key={item.id}>
                             <div
-                              className={`${styles.font} ${styles.container_info}  text-center`}
+                              className={`border-5 shadow-sm p-2 ${styles.card_user}`}
                             >
-                              <div
-                                className={`${styles.name} ${styles.word_breaker} pb-1`}
-                              >
-                                <div>
-                                  {" "}
-                                  {item.Title} {item.lastName}
-                                </div>
+                              <div className={`${styles.container_image}`}>
+                                <img
+                                  className={styles.image_user}
+                                  alt="100%x280"
+                                  src="https://images.unsplash.com/photo-1532781914607-2031eca2f00d?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=7c625ea379640da3ef2e24f20df7ce8d"
+                                />
                               </div>
-                              <p className={styles.job}>{item.job}</p>
-                              <p className={styles.area}>{item.area}</p>
-                              <p className={styles.email}>{item.email}</p>
+                              <div
+                                className={`${styles.font} ${styles.container_info}  text-center`}
+                              >
+                                <div
+                                  className={`${styles.name} ${styles.word_breaker} pb-1`}
+                                >
+                                  <div>
+                                    {" "}
+                                    {item.Title} {item.lastName}
+                                  </div>
+                                </div>
+                                <p className={styles.job}>{item.job}</p>
+                                <p className={styles.area}>{item.area}</p>
+                                <p className={styles.email}>{item.email}</p>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      ))
-                    : ""}
+                        ))
+                      : ""}
+                  </div>
                 </div>
+              ))
+            ) : (
+              <div className={`${styles.content_alert} `}>
+                <div>No se encontraron resultados</div>
               </div>
-            ))}
+            )}
           </div>
           <div className={`${styles.button_carousel}`}>
             <button

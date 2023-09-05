@@ -8,24 +8,65 @@ import "bootstrap/dist/js/bootstrap.min.js";
 interface IPruebasDirectorioState {
   search: string;
   listView: any[];
+  width: number;
 }
+interface IConfigDivisor {
+  min: number;
+  max: number;
+  divisor: number;
+}
+
 export default class PruebasDirectorio extends React.Component<
   IPruebasDirectorioProps,
   IPruebasDirectorioState,
   {}
 > {
   listOrigin: any = [];
+  divisorColorRange: IConfigDivisor[] = [
+    {
+      min: 0,
+      max: 576,
+      divisor: 1,
+    },
+    {
+      min: 576,
+      max: 992,
+      divisor: 2,
+    },
+    {
+      min: 992,
+      max: 1200,
+      divisor: 3,
+    },
+  ];
   constructor(props: IPruebasDirectorioProps) {
     super(props);
-    const listValues = this.getPartitionList([...this.props.listItems]);
+    const listValues = this.getPartitionList(
+      [...this.props.listItems],
+      window.innerWidth
+    );
     this.state = {
       search: "",
       listView: listValues,
+      width: window.innerWidth,
     };
     this.listOrigin = [...this.props.listItems];
     this.handleChange = this.handleChange.bind(this);
   }
 
+  componentDidMount() {
+    window.addEventListener("resize", this.handleResize);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.handleResize);
+  }
+  handleResize = () => {
+    this.getFilterSearch();
+    this.setState({
+      width: window.innerWidth,
+    });
+  };
   handleChange = (event: React.ChangeEvent<HTMLInputElement>, name: string) => {
     this.setState({
       ...this.state,
@@ -35,39 +76,51 @@ export default class PruebasDirectorio extends React.Component<
   };
 
   getFilterSearch = () => {
-    console.log("search value", this.state.search);
     const newList = this.listOrigin.filter((list: any) => {
       return (
         list.Title.toLowerCase().indexOf(this.state.search.toLowerCase()) > -1
       );
     });
     this.getSetListState(newList);
-    console.log("valores return", newList);
   };
 
   getSetListState = (listNew: any[]): void => {
-    const listValues = this.getPartitionList([...listNew]);
+    const listValues = this.getPartitionList([...listNew], this.state.width);
     this.setState({
       search: this.state.search,
       listView: listValues,
     });
   };
   getFilterReset = (): void => {
-    const listValues = this.getPartitionList([...this.props.listItems]);
+    const listValues = this.getPartitionList(
+      [...this.props.listItems],
+      this.state.width
+    );
     this.setState({
       search: "",
       listView: listValues,
     });
   };
-  getPartitionList(list: any[]): any {
+  successScreenSize(widthDisplay: number): boolean {
+    return widthDisplay < 768;
+  }
+
+  generateDivisorCard = (display: number): number => {
+    const options = this.divisorColorRange.filter(
+      (option: IConfigDivisor) => display >= option.min && display <= option.max
+    );
+    return options.length > 0 ? options[0].divisor : 3;
+  };
+
+  getPartitionList(list: any[], widthDisplay: number): any {
     const partitionList: any = [];
+    const divisor: number = this.generateDivisorCard(widthDisplay);
     list.map((item, index) => {
-      if (index % 3 === 0) {
-        const maxLenght = index + 3 < list.length ? index + 3 : list.length;
-        console.log(maxLenght, index);
-        console.log("max", list.length);
+      if (index % divisor === 0) {
+        const maxLenght =
+          index + divisor < list.length ? index + divisor : list.length;
+
         const newList = list.slice(index, maxLenght);
-        console.log(newList);
         partitionList.push(newList);
       }
     });
@@ -76,7 +129,6 @@ export default class PruebasDirectorio extends React.Component<
 
   public render(): React.ReactElement<IPruebasDirectorioProps> {
     const { listView } = this.state;
-
     return (
       <div>
         <div className={`${styles.content_filter} row p-3`}>
@@ -148,7 +200,10 @@ export default class PruebasDirectorio extends React.Component<
                   <div className="row">
                     {list !== undefined
                       ? list.map((item: any) => (
-                          <div className="col-md-4 mb-3" key={item.id}>
+                          <div
+                            className="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12"
+                            key={item.id}
+                          >
                             <div
                               className={`border-5 shadow-sm p-2 ${styles.card_user}`}
                             >

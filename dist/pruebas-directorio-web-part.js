@@ -950,9 +950,8 @@ var PruebasDirectorioWebPart = /** @class */ (function (_super) {
                         return [4 /*yield*/, this.context.spHttpClient.get(endpoint, _microsoft_sp_http__WEBPACK_IMPORTED_MODULE_7__["SPHttpClient"].configurations.v1)];
                     case 1:
                         response = _a.sent();
-                        _a.label = 2;
-                    case 2: return [4 /*yield*/, response.json()];
-                    case 3:
+                        return [4 /*yield*/, response.json()];
+                    case 2:
                         data = _a.sent();
                         listNew = data.value.map(function (item) { return (__assign(__assign({}, item), { img: "".concat(endpointImgs).concat(item.Imagen) })); });
                         return [2 /*return*/, listNew];
@@ -2763,7 +2762,6 @@ var PruebasDirectorio = /** @class */ (function (_super) {
             var options = _this.divisorColorRange.filter(function (option) { return display >= option.min && display <= option.max; });
             return options.length > 0 ? options[0].divisor : 3;
         };
-        console.log.apply(console, __spreadArray(["lista nueva con imagenes"], _this.props.listItems, false));
         var listValues = _this.getPartitionList(__spreadArray([], _this.props.listItems, true), window.innerWidth);
         _this.state = {
             search: "",
@@ -2818,7 +2816,7 @@ var PruebasDirectorio = /** @class */ (function (_super) {
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { id: "carouselExample", className: "carousel slide" },
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "carousel-inner" }, listView.length !== 0 ? (listView.map(function (list, index) { return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "carousel-item ".concat(index === 0 ? "active" : ""), key: index },
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "row" }, list !== undefined
-                        ? list.map(function (item) { return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12", key: item.id },
+                        ? list.map(function (item) { return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12", key: item.Title },
                             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "border-5 shadow-sm p-2 ".concat(_PruebasDirectorio_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].card_user) },
                                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "".concat(_PruebasDirectorio_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].container_image) },
                                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", { className: _PruebasDirectorio_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].image_user, alt: item.Imagen, src: "".concat(item.img) })),

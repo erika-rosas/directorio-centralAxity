@@ -1,10 +1,10 @@
 import * as React from "react";
-import { IPruebasDirectorioProps } from "./IPruebasDirectorioProps";
+import { IPruebasDirectorioProps, IitemDirectory } from "./IPruebasDirectorioProps";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 interface IPruebasDirectorioState {
     search: string;
-    listView: any[];
+    listView: IitemDirectory[][];
     width: number;
 }
 interface IConfigDivisor {
@@ -13,7 +13,7 @@ interface IConfigDivisor {
     divisor: number;
 }
 export default class PruebasDirectorio extends React.Component<IPruebasDirectorioProps, IPruebasDirectorioState, {}> {
-    listOrigin: any;
+    listOrigin: IitemDirectory[];
     divisorColorRange: IConfigDivisor[];
     constructor(props: IPruebasDirectorioProps);
     componentDidMount(): void;
@@ -21,11 +21,11 @@ export default class PruebasDirectorio extends React.Component<IPruebasDirectori
     handleResize: () => void;
     handleChange: (event: React.ChangeEvent<HTMLInputElement>, name: string) => void;
     getFilterSearch: () => void;
-    getSetListState: (listNew: any[]) => void;
+    getSetListState: (listNew: IitemDirectory[]) => void;
     getFilterReset: () => void;
     successScreenSize(widthDisplay: number): boolean;
     generateDivisorCard: (display: number) => number;
-    getPartitionList(list: any[], widthDisplay: number): any;
+    getPartitionList(list: IitemDirectory[], widthDisplay: number): IitemDirectory[][];
     render(): React.ReactElement<IPruebasDirectorioProps>;
 }
 export {};

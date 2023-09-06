@@ -18,7 +18,6 @@
     "TeamsTab",
     "SharePointFullPage"
   ],
-  "imageLinkPropertyNames": ["defaultBannerImage"],
   "supportsThemeVariants": true,
 
   "preconfiguredEntries": [
@@ -29,8 +28,7 @@
       "description": { "default": "pruebas-directorio description" },
       "officeFabricIconFontName": "Page",
       "properties": {
-        "description": "pruebas-directorio",
-        "defaultBannerImage": "/sites/CentralAxity/México/Consultoria2/SiteAssets/imgs/consultoria.svg"
+        "description": "pruebas-directorio"
       }
     }
   ]

@@ -10,7 +10,10 @@ import { IReadonlyTheme } from "@microsoft/sp-component-base";
 
 import * as strings from "PruebasDirectorioWebPartStrings";
 import PruebasDirectorio from "./components/PruebasDirectorio";
-import { IPruebasDirectorioProps } from "./components/IPruebasDirectorioProps";
+import {
+  IPruebasDirectorioProps,
+  IitemDirectory,
+} from "./components/IPruebasDirectorioProps";
 import { SPHttpClient, SPHttpClientResponse } from "@microsoft/sp-http";
 
 export interface IPruebasDirectorioWebPartProps {
@@ -18,7 +21,7 @@ export interface IPruebasDirectorioWebPartProps {
 }
 
 export default class PruebasDirectorioWebPart extends BaseClientSideWebPart<IPruebasDirectorioWebPartProps> {
-  private _listItems: any[] = [];
+  private _listItems: IitemDirectory[] = [];
   private _isDarkTheme: boolean = false;
   private _environmentMessage: string = "";
 
@@ -42,18 +45,17 @@ export default class PruebasDirectorioWebPart extends BaseClientSideWebPart<IPru
     });
   }
 
-  private async _loadListItems(): Promise<any> {
+  private async _loadListItems(): Promise<IitemDirectory[]> {
     const listTitle = "DirectorioConsultoria"; // Reemplaza con el nombre real de la lista
     const dirImgs = "/SiteAssets/imgs/"; // Reemplaza con el nombre real de la lista
     const endpoint = `${this.context.pageContext.web.absoluteUrl}/_api/web/lists/getbytitle('${listTitle}')/items`;
     const endpointImgs = `${this.context.pageContext.web.absoluteUrl}${dirImgs}`;
-    https: const response: SPHttpClientResponse =
-      await this.context.spHttpClient.get(
-        endpoint,
-        SPHttpClient.configurations.v1
-      );
+    const response: SPHttpClientResponse = await this.context.spHttpClient.get(
+      endpoint,
+      SPHttpClient.configurations.v1
+    );
     const data = await response.json();
-    const listNew = data.value.map((item: any) => ({
+    const listNew = data.value.map((item: IitemDirectory) => ({
       ...item,
       img: `${endpointImgs}${item.Imagen}`,
     }));

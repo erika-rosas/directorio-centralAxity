@@ -1,13 +1,16 @@
 import * as React from "react";
 import styles from "./PruebasDirectorio.module.scss";
-import { IPruebasDirectorioProps } from "./IPruebasDirectorioProps";
+import {
+  IPruebasDirectorioProps,
+  IitemDirectory,
+} from "./IPruebasDirectorioProps";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 
 interface IPruebasDirectorioState {
   search: string;
-  listView: any[];
+  listView: IitemDirectory[][];
   width: number;
 }
 interface IConfigDivisor {
@@ -21,7 +24,7 @@ export default class PruebasDirectorio extends React.Component<
   IPruebasDirectorioState,
   {}
 > {
-  listOrigin: any = [];
+  listOrigin: IitemDirectory[] = [];
   divisorColorRange: IConfigDivisor[] = [
     {
       min: 0,
@@ -41,7 +44,6 @@ export default class PruebasDirectorio extends React.Component<
   ];
   constructor(props: IPruebasDirectorioProps) {
     super(props);
-    console.log("lista nueva con imagenes", ...this.props.listItems);
     const listValues = this.getPartitionList(
       [...this.props.listItems],
       window.innerWidth
@@ -77,7 +79,7 @@ export default class PruebasDirectorio extends React.Component<
   };
 
   getFilterSearch = () => {
-    const newList = this.listOrigin.filter((list: any) => {
+    const newList = this.listOrigin.filter((list: IitemDirectory) => {
       return (
         list.Title.toLowerCase().indexOf(this.state.search.toLowerCase()) > -1
       );
@@ -85,7 +87,7 @@ export default class PruebasDirectorio extends React.Component<
     this.getSetListState(newList);
   };
 
-  getSetListState = (listNew: any[]): void => {
+  getSetListState = (listNew: IitemDirectory[]): void => {
     const listValues = this.getPartitionList([...listNew], this.state.width);
     this.setState({
       search: this.state.search,
@@ -113,8 +115,11 @@ export default class PruebasDirectorio extends React.Component<
     return options.length > 0 ? options[0].divisor : 3;
   };
 
-  getPartitionList(list: any[], widthDisplay: number): any {
-    const partitionList: any = [];
+  getPartitionList(
+    list: IitemDirectory[],
+    widthDisplay: number
+  ): IitemDirectory[][] {
+    const partitionList: IitemDirectory[][] = [];
     const divisor: number = this.generateDivisorCard(widthDisplay);
     list.map((item, index) => {
       if (index % divisor === 0) {
@@ -193,17 +198,17 @@ export default class PruebasDirectorio extends React.Component<
         <div id="carouselExample" className="carousel slide">
           <div className="carousel-inner">
             {listView.length !== 0 ? (
-              listView.map((list: any, index: number) => (
+              listView.map((list: IitemDirectory[], index: number) => (
                 <div
                   className={`carousel-item ${index === 0 ? "active" : ""}`}
                   key={index}
                 >
                   <div className="row">
                     {list !== undefined
-                      ? list.map((item: any) => (
+                      ? list.map((item: IitemDirectory) => (
                           <div
                             className="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12"
-                            key={item.id}
+                            key={item.Title}
                           >
                             <div
                               className={`border-5 shadow-sm p-2 ${styles.card_user}`}

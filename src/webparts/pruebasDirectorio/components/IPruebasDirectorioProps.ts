@@ -4,7 +4,13 @@ export interface IPruebasDirectorioProps {
   environmentMessage: string;
   hasTeamsContext: boolean;
   userDisplayName: string;
-  listItems: any[];
+  listItems: IitemDirectory[];
+}
+export interface IitemDirectory {
+  Title: string;
+  Correo: string;
+  Imagen: string;
+  img: string;
 }
 
 export interface IUser {
